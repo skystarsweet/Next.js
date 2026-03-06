@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="40" fill="#0f0f1a"/>
+  <!-- Brain outline -->
+  <path d="M128 50 C90 50 60 75 60 108 C60 125 68 140 82 150 L82 180 C82 188 88 194 96 194 L160 194 C168 194 174 188 174 180 L174 150 C188 140 196 125 196 108 C196 75 166 50 128 50Z"
+        fill="none" stroke="#4FC3F7" stroke-width="6" stroke-linejoin="round"/>
+  <!-- EEG wave across brain -->
+  <polyline points="70,120 85,120 95,95 105,145 115,105 125,135 135,110 145,130 155,108 165,120 186,120"
+        fill="none" stroke="#4FC3F7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Center line -->
+  <line x1="128" y1="50" x2="128" y2="90" stroke="#4FC3F7" stroke-width="3" opacity="0.5"/>
+</svg>

@@ -1,13 +1,24 @@
 {
-  "name": "project-template-next.js",
+  "name": "eeg-edf-reader",
+  "version": "1.0.0",
+  "description": "Standalone EEG EDF File Reader with artifact cancellation and eye movement recognition",
   "private": true,
+  "main": "electron/main.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development electron .\"",
+    "electron-build": "npm run build && npm run export && electron-builder",
+    "dist": "npm run electron-build",
+    "dist:win": "npm run electron-build -- --win"
   },
   "dependencies": {
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.8.2",
     "next": "12.0.9",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -15,8 +26,49 @@
   "devDependencies": {
     "@types/node": "17.0.12",
     "@types/react": "17.0.38",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1",
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.9",
-    "typescript": "4.5.5"
+    "typescript": "4.5.5",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.eeg.edfreader",
+    "productName": "EEG EDF Reader",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "public/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "EEG EDF Reader"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/icon.png"
+    }
   }
 }
