@@ -1,0 +1,521 @@
+/* Windows Classic UI Audio Player */
+
+.playerWrapper {
+  width: 480px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px 2px 0 #000000, inset 1px 1px 0 #dfdfdf;
+  font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+  font-size: 11px;
+  color: #000000;
+  user-select: none;
+}
+
+/* ─── Title Bar ─── */
+.titleBar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 4px 3px 6px;
+  height: 22px;
+}
+
+.titleBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.titleBarIcon {
+  font-size: 13px;
+  color: #ffff00;
+}
+
+.titleBarText {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.titleBarButtons {
+  display: flex;
+  gap: 2px;
+}
+
+.titleBtn {
+  width: 16px;
+  height: 14px;
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  font-size: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  font-family: inherit;
+}
+
+.titleBtn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.closeBtn:hover {
+  background: #c00000;
+  color: #ffffff;
+}
+
+/* ─── Menu Bar ─── */
+.menuBar {
+  background: #c0c0c0;
+  border-bottom: 1px solid #808080;
+  display: flex;
+  gap: 0;
+  padding: 2px 4px;
+}
+
+.menuItem {
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.menuItem:hover {
+  background: #000080;
+  color: #ffffff;
+}
+
+/* ─── Body ─── */
+.playerBody {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ─── Display Area ─── */
+.displayArea {
+  background: #000000;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  padding: 8px;
+}
+
+.nowPlaying {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.trackInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.trackName {
+  color: #00ff00;
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 6px #00ff00;
+}
+
+.trackMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.formatBadge {
+  background: #003300;
+  color: #00cc00;
+  border: 1px solid #00aa00;
+  padding: 0 4px;
+  font-size: 9px;
+  font-family: 'Courier New', monospace;
+}
+
+.timeDisplay {
+  color: #00cc00;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  text-shadow: 0 0 4px #00cc00;
+}
+
+/* ─── Visualizer ─── */
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 36px;
+}
+
+.bar {
+  width: 6px;
+  background: linear-gradient(to top, #00ff00 0%, #ffff00 60%, #ff4400 100%);
+  min-height: 2px;
+  transition: height 0.1s ease;
+  border-radius: 1px 1px 0 0;
+}
+
+/* ─── Seek Bar ─── */
+.seekRow {
+  position: relative;
+  height: 16px;
+}
+
+.seekBar {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #003300;
+  border: 1px solid #00aa00;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  outline: none;
+}
+
+.seekBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 14px;
+  background: #00ff00;
+  cursor: pointer;
+  border: 1px solid #006600;
+  box-shadow: 0 0 4px #00ff00;
+}
+
+.seekBar::-moz-range-thumb {
+  width: 12px;
+  height: 14px;
+  background: #00ff00;
+  cursor: pointer;
+  border: 1px solid #006600;
+}
+
+.seekBar:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.progressFill {
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  height: 4px;
+  background: #00ff00;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 1;
+  max-width: calc(100% - 2px);
+}
+
+/* ─── Controls ─── */
+.controls {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.transportRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.ctrlBtn {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  width: 34px;
+  height: 28px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: none;
+}
+
+.ctrlBtn:hover:not(:disabled) {
+  background: #d4d0c8;
+}
+
+.ctrlBtn:active:not(:disabled),
+.ctrlBtn.active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  background: #b0b0b0;
+}
+
+.ctrlBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.playBtn {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  width: 44px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.playBtn:hover:not(:disabled) {
+  background: #d4d0c8;
+}
+
+.playBtn:active:not(:disabled) {
+  border-color: #808080 #ffffff #ffffff #808080;
+  background: #b0b0b0;
+}
+
+.playBtn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.volumeRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.muteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.volumeSlider {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #808080;
+  border: 1px solid #606060;
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 14px;
+  height: 18px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+}
+
+.volLabel {
+  width: 30px;
+  font-size: 10px;
+  color: #000080;
+  font-family: 'Courier New', monospace;
+  text-align: right;
+}
+
+/* ─── Playlist ─── */
+.playlist {
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  background: #ffffff;
+  transition: background 0.15s;
+}
+
+.playlist.dragging {
+  background: #e0e8ff;
+  border-color: #000080 #0000aa #0000aa #000080;
+}
+
+.playlistHeader {
+  background: #000080;
+  color: #ffffff;
+  padding: 3px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.addBtn {
+  background: #c0c0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: #000000;
+  padding: 1px 6px;
+  font-size: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.addBtn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.playlistBody {
+  max-height: 150px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.playlistBody::-webkit-scrollbar {
+  width: 16px;
+}
+
+.playlistBody::-webkit-scrollbar-track {
+  background: #c0c0c0;
+}
+
+.playlistBody::-webkit-scrollbar-thumb {
+  background: #808080;
+  border: 2px solid;
+  border-color: #ffffff #606060 #606060 #ffffff;
+}
+
+.emptyMsg {
+  padding: 16px;
+  text-align: center;
+  color: #808080;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.supportedFormats {
+  color: #a0a0a0;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.playlistItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 11px;
+}
+
+.playlistItem:hover {
+  background: #d0d8ff;
+}
+
+.playlistItemActive {
+  background: #000080 !important;
+  color: #ffffff !important;
+}
+
+.trackNum {
+  color: #808080;
+  width: 18px;
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.playlistItemActive .trackNum {
+  color: #a0b0ff;
+}
+
+.playlistIcon {
+  font-size: 10px;
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.playlistName {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlistFormat {
+  font-size: 9px;
+  color: #808080;
+  flex-shrink: 0;
+  background: #e8e8e8;
+  padding: 0 3px;
+  border: 1px solid #c0c0c0;
+}
+
+.playlistItemActive .playlistFormat {
+  background: #0000a0;
+  color: #a0c0ff;
+  border-color: #4060d0;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #808080;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0;
+}
+
+.playlistItem:hover .removeBtn {
+  opacity: 1;
+}
+
+.playlistItemActive .removeBtn {
+  color: #a0b0ff;
+  opacity: 0.6;
+}
+
+.playlistItemActive .removeBtn:hover {
+  opacity: 1;
+  color: #ff8080;
+}
+
+/* ─── Status Bar ─── */
+.statusBar {
+  background: #c0c0c0;
+  border-top: 1px solid #808080;
+  padding: 2px 8px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #000000;
+}

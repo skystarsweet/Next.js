@@ -2,6 +2,20 @@
   padding: 0 2rem;
 }
 
+.desktop {
+  min-height: 100vh;
+  background: #008080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktopMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
