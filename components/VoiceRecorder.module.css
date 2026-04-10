@@ -1,0 +1,179 @@
+.recorder {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.recorderActive {
+  composes: recorder;
+  border-color: var(--recording);
+  box-shadow: 0 0 30px var(--recording-glow);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.recordBtn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  position: relative;
+}
+
+.recordBtn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px var(--accent-glow);
+}
+
+.recordBtnActive {
+  composes: recordBtn;
+  background: linear-gradient(135deg, var(--recording), #ff8585);
+  box-shadow: 0 4px 20px var(--recording-glow);
+  animation: pulse-ring 2s ease infinite;
+}
+
+.recordBtnActive:hover {
+  box-shadow: 0 6px 28px var(--recording-glow);
+}
+
+.secondaryBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.secondaryBtn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.timer {
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.statusText {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.statusRecording {
+  composes: statusText;
+  color: var(--recording);
+}
+
+.statusPaused {
+  composes: statusText;
+  color: var(--text-secondary);
+}
+
+.visualizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 40px;
+  margin-bottom: 16px;
+}
+
+.bar {
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: height 0.1s ease;
+  min-height: 3px;
+}
+
+.liveTranscript {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  min-height: 60px;
+  max-height: 120px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.liveTranscriptLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.liveTranscriptText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.placeholder {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 16px;
+}
+
+.error {
+  background: rgba(252, 92, 124, 0.1);
+  border: 1px solid rgba(252, 92, 124, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: var(--danger);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.unsupported {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.unsupportedTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.unsupportedText {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
