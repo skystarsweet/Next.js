@@ -37,19 +37,32 @@ class _AppNetGuardAppState extends State<AppNetGuardApp> {
   @override
   Widget build(BuildContext context) {
     const seed = Color(0xFFE64D66);
+    final colorScheme =
+        ColorScheme.fromSeed(
+          seedColor: seed,
+          brightness: Brightness.light,
+        ).copyWith(
+          // Pure white surfaces so the app reads as bright regardless of the
+          // device's dark-mode setting.
+          surface: Colors.white,
+          surfaceContainerLowest: Colors.white,
+          surfaceContainerLow: const Color(0xFFFCFCFC),
+          surfaceContainer: const Color(0xFFF7F7F7),
+        );
     return MaterialApp(
       title: 'AppNetGuard',
       debugShowCheckedModeBanner: false,
+      // Always render the light theme; the app never switches to dark mode.
+      themeMode: ThemeMode.light,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: seed),
+        colorScheme: colorScheme,
+        scaffoldBackgroundColor: Colors.white,
         useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: seed,
-          brightness: Brightness.dark,
+        cardTheme: const CardThemeData(color: Colors.white),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
         ),
-        useMaterial3: true,
       ),
       home: HomeScreen(controller: _controller),
     );

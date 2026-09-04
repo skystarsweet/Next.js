@@ -83,6 +83,16 @@ void main() {
     return controller;
   }
 
+  testWidgets('always uses the bright light theme', (tester) async {
+    tester.platformDispatcher.platformBrightnessTestValue = Brightness.dark;
+    addTearDown(tester.platformDispatcher.clearPlatformBrightnessTestValue);
+    await pumpApp(tester);
+
+    final context = tester.element(find.text('AppNetGuard'));
+    expect(Theme.of(context).brightness, Brightness.light);
+    expect(Theme.of(context).scaffoldBackgroundColor, Colors.white);
+  });
+
   testWidgets('shows empty state and filter off', (tester) async {
     await pumpApp(tester);
 
