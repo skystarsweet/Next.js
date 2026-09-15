@@ -1,7 +1,8 @@
 {
   "enabledPlugins": {
     "find-skills@easier-life-skills": true,
-    "claude-mem@thedotmack": true
+    "claude-mem@thedotmack": true,
+    "graphify@pleaseai": true
   },
   "extraKnownMarketplaces": {
     "easier-life-skills": {
@@ -14,6 +15,12 @@
       "source": {
         "source": "github",
         "repo": "thedotmack/claude-mem"
+      }
+    },
+    "pleaseai": {
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/claude-code-plugins"
       }
     }
   }
