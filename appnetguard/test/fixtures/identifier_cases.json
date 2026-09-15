@@ -1,0 +1,102 @@
+{
+  "_comment": [
+    "Shared fixture for bundle identifier normalization and validation.",
+    "Read by test/app_rule_validation_test.dart (Dart, AppRule in lib/models.dart)",
+    "and by ios/RunnerTests/AppRuleValidationTests.swift (Swift, AppRule in",
+    "ios/Shared/AppRule.swift). The two implementations are hand-mirrored copies",
+    "with no compile-time link, so this table is the only thing keeping them honest.",
+    "Change a rule on one side and this fixture forces the other side to follow."
+  ],
+  "cases": [
+    {
+      "input": "com.example.app",
+      "normalized": "com.example.app",
+      "valid": true,
+      "note": "plain bundle identifier"
+    },
+    {
+      "input": "  com.Example.App  ",
+      "normalized": "com.example.app",
+      "valid": true,
+      "note": "surrounding whitespace is trimmed and the value lowercased"
+    },
+    {
+      "input": "COM.GOOGLE.IOS.YOUTUBE",
+      "normalized": "com.google.ios.youtube",
+      "valid": true,
+      "note": "uppercase input normalizes to the stored form"
+    },
+    {
+      "input": "com.example.app\n",
+      "normalized": "com.example.app",
+      "valid": true,
+      "note": "trailing newline is trimmed"
+    },
+    {
+      "input": "com.my-app_1.dev",
+      "normalized": "com.my-app_1.dev",
+      "valid": true,
+      "note": "digits, hyphen and underscore are allowed"
+    },
+    {
+      "input": "a.b",
+      "normalized": "a.b",
+      "valid": true,
+      "note": "three characters is the shortest accepted identifier"
+    },
+    {
+      "input": "...",
+      "normalized": "...",
+      "valid": true,
+      "note": "known permissive case: length and charset pass, so both sides accept it. If one side is tightened, this row must be updated on both."
+    },
+    {
+      "input": "",
+      "normalized": "",
+      "valid": false,
+      "note": "empty"
+    },
+    {
+      "input": "   ",
+      "normalized": "",
+      "valid": false,
+      "note": "whitespace only, empty after trimming"
+    },
+    {
+      "input": "ab",
+      "normalized": "ab",
+      "valid": false,
+      "note": "shorter than three characters"
+    },
+    {
+      "input": "com",
+      "normalized": "com",
+      "valid": false,
+      "note": "no dot separator"
+    },
+    {
+      "input": "com example.app",
+      "normalized": "com example.app",
+      "valid": false,
+      "note": "interior space is outside the allowed charset"
+    },
+    {
+      "input": "com.example/app",
+      "normalized": "com.example/app",
+      "valid": false,
+      "note": "slash is outside the allowed charset"
+    },
+    {
+      "input": "com.example.app!",
+      "normalized": "com.example.app!",
+      "valid": false,
+      "note": "punctuation other than dot, hyphen and underscore is rejected"
+    },
+    {
+      "input": "com.exämple.app",
+      "normalized": "com.exämple.app",
+      "valid": false,
+      "note": "non-ASCII is rejected even though it lowercases cleanly"
+    }
+  ]
+}

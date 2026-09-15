@@ -25,6 +25,7 @@
 		FE00000000000000000D0011 /* AppRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00000000000000000A0011 /* AppRule.swift */; };
 		FE00000000000000000D0012 /* RuleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00000000000000000A0012 /* RuleStore.swift */; };
 		FE00000000000000000D0013 /* RuleMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00000000000000000A0013 /* RuleMatcher.swift */; };
+		FE00000000000000000E0041 /* AppRuleValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE00000000000000000A0041 /* AppRuleValidationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		FE00000000000000000A0011 /* AppRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRule.swift; sourceTree = "<group>"; };
 		FE00000000000000000A0012 /* RuleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleStore.swift; sourceTree = "<group>"; };
 		FE00000000000000000A0013 /* RuleMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleMatcher.swift; sourceTree = "<group>"; };
+		FE00000000000000000A0041 /* AppRuleValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRuleValidationTests.swift; sourceTree = "<group>"; };
 		FE00000000000000000A0021 /* FilterDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataProvider.swift; sourceTree = "<group>"; };
 		FE00000000000000000A0022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE00000000000000000A0023 /* FilterExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FilterExtension.entitlements; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				331C807B294A618700263BE5 /* RunnerTests.swift */,
+				FE00000000000000000A0041 /* AppRuleValidationTests.swift */,
 			);
 			path = RunnerTests;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */,
+				FE00000000000000000E0041 /* AppRuleValidationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
