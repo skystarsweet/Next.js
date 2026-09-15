@@ -25,6 +25,17 @@ extension FilterStatusX on FilterStatus {
   }
 }
 
+/// A single per-app rule as the Flutter UI sees it.
+///
+/// Mirrored in Swift by `AppRule` in `ios/Shared/AppRule.swift`; the two are
+/// hand-kept copies with no compile-time link. `normalizeIdentifier` and
+/// `isValidIdentifier` must agree with `AppRule.normalize` and
+/// `AppRule.isValidIdentifier` there — the shared table in
+/// `test/fixtures/identifier_cases.json` is the contract, and both
+/// `test/app_rule_validation_test.dart` and
+/// `ios/RunnerTests/AppRuleValidationTests.swift` assert against it. Change
+/// validation here and you must update the fixture and the Swift copy in the
+/// same commit.
 class AppRule {
   const AppRule({
     required this.bundleIdentifier,
