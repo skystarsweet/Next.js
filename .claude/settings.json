@@ -1,13 +1,20 @@
 {
+  "enabledPlugins": {
+    "find-skills@easier-life-skills": true,
+    "claude-mem@thedotmack": true
+  },
   "extraKnownMarketplaces": {
     "easier-life-skills": {
       "source": {
         "source": "github",
         "repo": "dan323/easier-life-skills"
       }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
     }
-  },
-  "enabledPlugins": {
-    "find-skills@easier-life-skills": true
   }
 }
